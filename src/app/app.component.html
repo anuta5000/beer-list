@@ -1,16 +1,17 @@
-
-
 <div class="container">
   <h6>Поиск:</h6>
   <div class="d-flex">
     <input 
     class="form-control"
-    #toTarget
+    #toFilter
     type="text"
     autocomplete="off"
     >
-    <button class="btn btn-dark mr-0">
-        <i class="bi bi-arrow-clockwise"></i>
+    <button class="btn btn-dark mr-0" (click)="sort('asc')">
+      <i class="bi bi-arrow-up"></i>
+  </button>
+    <button class="btn btn-dark mr-0" (click)="sort('desc')">
+        <i class="bi bi-arrow-down"></i>
     </button>
   </div>
 

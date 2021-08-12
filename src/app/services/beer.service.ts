@@ -16,7 +16,7 @@ export interface BeerI {
 @Injectable({providedIn:'root'})
 export class BeerService {
 
-    beer$:BehaviorSubject<BeerI[] | null> = new BehaviorSubject<BeerI[] | null>(null);
+    restoreArray:BeerI[] = [];  // возможно имеет смысл запрашивать с сервера
 
     constructor(
         private http:HttpClient
@@ -28,6 +28,7 @@ export class BeerService {
         return  this.http.get(`${environment.beerUrl}`)
          .pipe(   
               map((result:any)=><BeerI[]>result),
+              tap((result:BeerI[])=>this.restoreArray = result),
          ) 
     }
 
